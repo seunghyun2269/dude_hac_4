@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import Signup
@@ -12,8 +12,8 @@ def signup(request):
                 username = request.POST['username'], password=request.POST['password1'])
             signup = Signup()
             signup.user = user
-            signup.address = request.POST['std_num']
-            signup.college = request.POST['major']
+            signup.address = request.POST['address']
+            signup.college = request.POST['college']
             signup.save()
             auth.login(request, user)
             return redirect('/')
