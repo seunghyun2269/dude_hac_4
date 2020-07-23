@@ -25,7 +25,8 @@ def detail(request, id): # home -> detail / 게시물 세부 사항 보여줌, �
         comment.pub_date = timezone.datetime.now()
         comment.save()
         redirect('detail', id = post.id)
-    return render(request, 'detail.html', {'post' : post})
+    comment = Comment.objects.filter(post = post)
+    return render(request, 'detail.html', {'post' : post, 'comment' : comment})
 
 def profile(request, id): # detail or home -> profile / 유저 프로필, 평점 먹일 수 있음
     post = Post.objects.get(id = id)
