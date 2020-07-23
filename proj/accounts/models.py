@@ -8,4 +8,3 @@ class Signup(models.Model):
     college =  models.CharField(max_length=20)
     email = models.CharField(max_length=100)
     grade = models.FloatField(null=True, blank=True, default=None)
-    comment = models.CharField(max_length=100)
