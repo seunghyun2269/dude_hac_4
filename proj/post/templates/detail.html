@@ -15,35 +15,51 @@
     <thead>
       <tr>
         <th scope="col">판매자</th>
-        <th scope="col">First</th>
+        <th scope="col">{{post.user.username}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">판매자 등급</th>
-        <td>Mark</td>
+    <tr>
+        <th scope="row">제목</th>
+        <td>{{post.title}}</td>
       </tr>
       <tr>
-        <th scope="row">학군</th>
-        <td>Jacob</td>
+        <th scope="row">올린 날짜</th>
+        <td>{{post.pub_date}}</td>
+      </tr>
+      <tr>
+        <th scope="row">학교</th>
+        <td>{{post.user.signup.college}}</td>
       </tr>
     </tbody>
   </table>
-
-  <br>
-
+  
   <p class="h6">책 설명 (한줄 설명)</p>
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
-</body>
+
 
 <br>
 
 <input type="text" placeholder="댓글 달기">
 <input type="button" value="등록">
 
-=======
->>>>>>> 084204fa56d05f01f35e0b08d13261a5eee0112a
->>>>>>> 1e2c6fd023e3e5241c68fc45fb5e23f9ed825dfe
+</body>
 {% endblock %}
+=======
+  <br>
+  <p>{{post.body}}</p>
+  <br>
+  <form action="{% url 'detail' post.id %}" method = "POST">
+      {% csrf_token %}
+      <input type="comment" placeholder="댓글 달기">
+      <input type="button" value="등록">
+  </form>
+  <br>
+  <h6>댓글</h6>
+  {% for i in comment %}
+    <span>{{i}}</span>&nbsp;<span>{{i.pub_date}}</span>
+  {% endfor %}
+</body>
+
+{% endblock %}
+>>>>>>> 0ff5de05618691ea8687b2a39e661365487695d7
