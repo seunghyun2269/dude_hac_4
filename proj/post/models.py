@@ -9,7 +9,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images/')
     pub_date = models.DateTimeField()
     body = models.TextField()
-    comment = models.ForeignKey('Comment', on_delete=models.CASCADE)
+    # comment = models.ForeignKey('Comment', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
