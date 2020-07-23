@@ -26,7 +26,7 @@ def login(request):
         user = auth.authenticate(request, username = username, password = password)
         if user is not None:
             auth.login(request, user)
-            return redirect('main')
+            return redirect('home')
         else:
             return render(request, 'login.html')
     return render(request, 'login.html')

@@ -34,7 +34,7 @@ def profile(request, id): # detail or home -> profile / 유저 프로필, 평점
 def create(request): # 게시물 생성
     if request.method == "POST":
         post = Post()
-        post.user = request.user
+        post.user = user
         post.title = request.POST['title']
         post.image = request.POST['image']
         post.pub_date = timezone.datetime.now()
