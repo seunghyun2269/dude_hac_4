@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <link rel='stylesheet' href='{% static "css/login_signup.css" %}'>
+    <title></title>
+</head>
+<body>
+    <form action ="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+    <div class="signup_form" >
+        <h1>SIGN UP</h1>
+        <div class='txtb'><input type="text" name="username" placeholder='아이디를 입력해주세요.'>
+        <span data-placeholder='Username'></span>
+        </div>
+  
+       <div class="txtb">
+            <input type="password" name="password1" placeholder='비밀번호를 입력해주세요.' >
+            <span data-placeholder='Password'></span>
+        </div>
+
+        <div class="txtb">
+            <input type="password" name="password2" placeholder='비밀번호를 확인해주세요.' >
+            <span data-placeholder='Password'></span>
+        </div>  
+        <div class="txtb">
+            <input type="text" name="address" placeholder='주소를 입력해주세요.' >
+            <span data-placeholder='Password'></span>
+        </div>
+  
+       <div class="txtb">
+            <input type="text" name="college" placeholder='학교를 입력해주세요'. >
+         <span data-placeholder='Password'></span>
+        </div>
+
+        <div class="txtb">
+            <input type="text" name="email" placeholder='이메일을 입력해주세요'. >
+         <span data-placeholder='Password'></span>
+        </div>
+  
+        <input type='submit' class='signup_btn' value='SIGN UP'>
+        <div class="bottom-text"><a href="{% url 'login' %}"> 로그인으로 돌아가기</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>
