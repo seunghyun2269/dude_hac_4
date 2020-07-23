@@ -7,7 +7,7 @@ def home(request):
     return render(request, 'home.html')
 
 def home(request):
-    if request.method = "POST":
+    if request.method == "POST":
         search = request.POST["search"]
         post_list = Post.objects.filter(title__contains = search)
         return render(request, 'result.html', {'result' : post_list})
@@ -20,4 +20,4 @@ def detail(request, id):
     return render(request, 'detail.html', {'post' : post})
 
 def profile(request, id):
-
+    return render(request, 'profile.html')
