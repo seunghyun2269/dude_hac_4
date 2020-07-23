@@ -43,7 +43,7 @@ def create(request): # 게시물 생성
         user = request.user
         post.user = user
         post.title = request.POST['title']
-        post.image = request.POST['image']
+        post.image = request.FILES['image']
         post.pub_date = timezone.datetime.now()
         post.body = request.POST['body']
         post.save()
