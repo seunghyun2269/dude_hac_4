@@ -3,11 +3,14 @@
 {% block title%}Detail{%endblock%}
 {% block content%}
 
+<body class = "text-center">
 
-<img src="..." class="rounded mx-auto d-block" alt="...">
-
+<div style="align-content: center;">
+  <img src="{{post.image.url}}" alt="centered image" />
+</div>
 
 <br>
+
 <table class="table">
     <thead>
       <tr>
@@ -30,5 +33,11 @@
   <br>
 
   <p class="h6">책 설명 (한줄 설명)</p>
+</body>
+
+<br>
+
+<input type="text" placeholder="댓글 달기">
+<input type="button" value="등록">
 
 {% endblock %}
