@@ -24,7 +24,7 @@ def detail(request, id): # home -> detail / 게시물 세부 사항 보여줌, �
         comment.body = request.POST["comment"]
         comment.pub_date = timezone.datetime.now()
         comment.save()
-        redirect('detail', id = post.id)
+        return redirect('detail', id = post.id)
     comment = Comment.objects.filter(post = post)
     return render(request, 'detail.html', {'post' : post, 'comment' : comment})
 
