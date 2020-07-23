@@ -18,3 +18,6 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     pub_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.user

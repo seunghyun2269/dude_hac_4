@@ -9,3 +9,6 @@ class Signup(models.Model):
     email = models.CharField(max_length=100)
     grade = models.FloatField(null=True, blank=True, default=None)
     comment = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user
