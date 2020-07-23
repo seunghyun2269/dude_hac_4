@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Post, Comment
 from accounts.models import Signup
+from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request): # 전체 게시물을 보여줌, 만약 검색하면 해당 게시물들만 보여줌
@@ -16,8 +17,13 @@ def home(request): # 전체 게시물을 보여줌, 만약 검색하면 해당 �
 def detail(request, id): # home -> detail / 게시물 세부 사항 보여줌, 댓글 작성 가능
     post = Post.objects.get(id = id)
     if request.method == "POST":
-        post.comment = request.POST["comment"]
-        post.save()
+        comment = Comment()
+        user = request.user
+        comment.post = post
+        comment.user = user
+        comment.body = request.POST["comment"]
+        comment.pub_date = timezone.datetime.now()
+        comment.save()
         redirect('detail', id = post.id)
     return render(request, 'detail.html', {'post' : post})
 
@@ -34,9 +40,10 @@ def profile(request, id): # detail or home -> profile / 유저 프로필, 평점
 def create(request): # 게시물 생성
     if request.method == "POST":
         post = Post()
-        post.user = request.user
+        user = request.user
+        post.user = user
         post.title = request.POST['title']
-        post.image = request.POST['image']
+        post.image = request.FILES['image']
         post.pub_date = timezone.datetime.now()
         post.body = request.POST['body']
         post.save()
