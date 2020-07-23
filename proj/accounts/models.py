@@ -7,5 +7,5 @@ class Signup(models.Model):
     address = models.CharField(max_length=30)
     college =  models.CharField(max_length=20)
     email = models.CharField(max_length=100)
-    grade = models.Field(default=1)
+    grade = models.FloatField(null=True, blank=True, default=None)
     
