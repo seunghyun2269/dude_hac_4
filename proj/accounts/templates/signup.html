@@ -8,7 +8,8 @@
     <title></title>
 </head>
 <body>
-    <form action ="{% url 'main' %}">
+    <form action ="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
     <div class="signup_form" >
         <h1>SIGN UP</h1>
         <div class='txtb'><input type="text" name="username" placeholder='아이디를 입력해주세요.'>
